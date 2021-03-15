@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lucky for Life</title>
+</head>
+
+<body>
+	<script language="javascript">
+
+	function getRandomInt(min, max) 
+	{
+  		max = Math.floor(max);
+  		min = Math.ceil(min);
+  		return Math.floor(Math.random() * (max - min + 1) + min);
+  	}
+
+	var rand_five = [];
+	for (i = 0; i < 5; i++)
+	{
+		rand_five[i] = getRandomInt(1, 48)
+	}
+	 rand_five.sort(function(a, b){return a-b});
+
+	luckyBall_rand = getRandomInt(1, 18);
+
+	number_string = prompt("Please enter the 5 winning pick number", "0 0 0 0 0 0");
+
+	player_ball = prompt("Please enter the winning lucky ball number", 0);
+
+	var player_numbers = number_string.split(" ");
+
+	document.write("The randomly selected number are: <br>");
+
+	match = 0
+
+	for (i = 0; i < 5; i++)
+	{
+		for (j = 0; j < 5; j++)
+		{
+			if (rand_five[i] == player_numbers[j])
+			{
+				match++;
+				break;
+			}
+		}
+	}
+
+	if (luckyBall_rand == player_ball)
+		luckyMatch = "Yes"
+	else
+		luckyMatch = "No"
+
+	if (match == 0 && luckyMatch == "Yes")
+		payout = "$4";
+	else if (match == 1 && luckyMatch == "Yes")
+		payout = "$6";
+	else if (match == 2 && luckyMatch == "No")
+		payout = "$3";
+	else if (match == 2 && luckyMatch == "Yes")
+		payout = "$25";
+	else if (match == 3 && luckyMatch == "No")
+		payout = "$20";
+	else if (match == 3 && luckyMatch == "Yes")
+		payout = "$150";
+	else if (match == 4 && luckyMatch == "No")
+		payout = "$200";
+	else if (match == 4 && luckyMatch == "Yes")
+		payout = "$5000";
+	else if (match == 5 && luckyMatch == "No")
+		payout = "$25,000 a YEAR for LIFE";
+	else if (match == 5 && luckyMatch == "Yes")
+		payout = "$7,000 a WEEK for LIFE";
+	else
+		payout = 0;
+
+	for (i = 0; i < 5; i++)
+	{
+		document.write(rand_five[i] + " ");
+	}
+	
+	document.write("<br><br>The 5 winning numbers are: <br>");
+
+	for (i = 0; i < 5; i++)
+	{
+		document.write(player_numbers[i] + " ");
+	}
+
+	document.write("<br>The winning lucky ball number is: " + player_ball + "<br>");
+	document.write("<br><br>The # of winning-5 matches: " + match);
+	document.write("<br>Lucky ball match: " + luckyMatch);
+	document.write("<br>Payout: " + payout);
+
+
+
+
+	</script>
+</body>
+</html>
